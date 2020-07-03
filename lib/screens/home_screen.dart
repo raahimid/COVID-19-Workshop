@@ -90,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         horizontal: 20.0,
                       ),
                       onPressed: () {},
-                      color: Colors.red,
+                      color: Colors.red[900],
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0),
                       ),
@@ -110,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         horizontal: 20.0,
                       ),
                       onPressed: () {},
-                      color: Colors.blue,
+                      color: Color(0xFF14B5D0),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0),
                       ),
@@ -188,7 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
         height: screenHeight * 0.15,
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFFAD9FE4), Palette.primaryColor],
+            colors: [Colors.white, Color(0xFFFFCC00)],
           ),
           borderRadius: BorderRadius.circular(20.0),
         ),
@@ -203,7 +203,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Text(
                   'Do your own test!',
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: Palette.primaryColor,
                     fontSize: 18.0,
                     fontWeight: FontWeight.bold,
                   ),
@@ -212,7 +212,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Text(
                   'Follow the instructions\nto do your own test.',
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: Palette.primaryColor,
                     fontSize: 16.0,
                   ),
                   maxLines: 2,
