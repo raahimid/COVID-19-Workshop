@@ -5,19 +5,15 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      title: const Text('COVID-19'),
       backgroundColor: Palette.primaryColor,
       elevation: 0.0,
-      leading: IconButton(
+      actions: <Widget>[
+        IconButton(
         icon: const Icon(Icons.menu),
         iconSize: 28.0,
         onPressed: () {},
       ),
-      actions: <Widget>[
-        IconButton(
-          icon: const Icon(Icons.notifications_none),
-          iconSize: 28.0,
-          onPressed: () {},
-        ),
       ],
     );
   }

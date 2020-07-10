@@ -13,7 +13,7 @@ class Styles {
   );
 
   static const tabTextStyle = TextStyle(
-    fontSize: 16.0,
+    fontSize: 19.0,
     fontWeight: FontWeight.w600,
   );
 }

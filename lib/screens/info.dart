@@ -14,26 +14,28 @@ class _StatsScreenState extends State<StatsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Palette.primaryColor,
+      backgroundColor: Colors.white,
       appBar: CustomAppBar(),
-      body: CustomScrollView(
-        physics: ClampingScrollPhysics(),
-        slivers: <Widget>[
-          _buildHeader(),
-          _buildRegionTabBar(),
-          _buildStatsTabBar(),
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            sliver: SliverToBoxAdapter(
-              child: StatsGrid(),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Text(
+          'Wear A Mask',
+          style: const TextStyle(
+            color: Colors.black,
+            fontSize: 40.0,
+            fontWeight: FontWeight.w400,
             ),
           ),
-          SliverPadding(
-            padding: const EdgeInsets.only(top: 20.0),
-            sliver: SliverToBoxAdapter(
-              child: CovidBarChart(covidCases: covidUSADailyNewCases),
-            ),
+          Text(
+              'Cover your mouth and nose when around others',
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 20.0,
+                fontWeight: FontWeight.w200,
+              ),
           ),
+          Image.asset('assets/images/MaskGirl.png'),
         ],
       ),
     );
@@ -93,11 +95,13 @@ class _StatsScreenState extends State<StatsScreen> {
         child: DefaultTabController(
           length: 3,
           child: TabBar(
+            labelPadding: EdgeInsets.all(30.0),
             indicatorColor: Colors.transparent,
             labelStyle: Styles.tabTextStyle,
             labelColor: Colors.white,
             unselectedLabelColor: Colors.white60,
-            tabs: <Widget>[
+            tabs: 
+            <Widget>[
               Text('Total'),
               Text('Today'),
               Text('Yesterday'),
