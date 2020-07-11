@@ -168,8 +168,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               height: 400,
               child: Column(
-              children: <Widget>[
-              CovidBarChart(covidCases: covidUSADailyNewCases)//make it a function
+              children: <Widget>[//make it a function
               ]),
             ),
           ],
