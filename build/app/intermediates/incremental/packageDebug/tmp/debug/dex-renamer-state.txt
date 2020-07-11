@@ -1,4 +1,4 @@
-#Sat Jul 11 15:40:42 EDT 2020
+#Sat Jul 11 16:22:12 EDT 2020
 base.0=C\:\\Users\\Raahim's Huawei\\COVID-19-Workshop\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

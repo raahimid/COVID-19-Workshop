@@ -111,19 +111,20 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                         horizontal: 20.0,
                       ),
                       onPressed: () {
-                        const uri = 'sms:800 232 4636?body=hello%20there';
-                        launch(uri);
+                        const url =
+                            "https://www.floridadisaster.org/covid19/testing-sites/";
+                        launch(url);
                       },
                       color: Color(0xFF14B5D0),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                       icon: const Icon(
-                        Icons.chat_bubble,
+                        Icons.healing,
                         color: Colors.white,
                       ),
                       label: Text(
-                        'Send SMS',
+                        'Get Tested',
                         style: Styles.buttonTextStyle,
                       ),
                       textColor: Colors.white,
