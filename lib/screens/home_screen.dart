@@ -6,6 +6,8 @@ import 'package:flutter_covid_dashboard_ui/widgets/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' show json;
 import 'package:url_launcher/url_launcher.dart';
+import 'dart:io' show Platform, stdout;
+
 
 
 class HomeScreen extends StatefulWidget {
@@ -130,8 +132,18 @@ fetchUSData() async {
                         horizontal: 20.0,
                       ),
                       onPressed: () {
-                        const uri = 'sms:800 232 4636?body=hello%20there';
-                        launch(uri);
+
+                        if(Platform.isAndroid)
+                        {
+                          const uri = 'sms:800 232 4636?body=hello%20there';
+                          launch(uri);
+                        }
+
+                        else if(Platform.isIOS){
+                          const uri = 'sms:0039-222-060-888';
+                          launch(uri);
+                        }
+                        
                       },
                       color: Color(0xFF14B5D0),
                       shape: RoundedRectangleBorder(
