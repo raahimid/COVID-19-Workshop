@@ -111,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                         horizontal: 20.0,
                       ),
                       onPressed: () {
-                        const uri = 'sms:800 232 4636?body=hello%20there';
+                        const uri = 'sms:800 232 4636?body=hi%20there';
                         launch(uri);
                       },
                       color: Color(0xFF14B5D0),
