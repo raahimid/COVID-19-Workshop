@@ -5,6 +5,7 @@ import 'package:flutter_covid_dashboard_ui/data/data.dart';
 import 'package:flutter_covid_dashboard_ui/widgets/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' show json;
+import 'package:url_launcher/url_launcher.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -106,7 +107,9 @@ fetchUSData() async {
                         vertical: 10.0,
                         horizontal: 20.0,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        launch(('tel://800-232-4636'));
+                      },
                       color: Colors.red[900],
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0),
@@ -126,7 +129,10 @@ fetchUSData() async {
                         vertical: 10.0,
                         horizontal: 20.0,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        const uri = 'sms:800 232 4636?body=hello%20there';
+                        launch(uri);
+                      },
                       color: Color(0xFF14B5D0),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0),
