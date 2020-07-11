@@ -3,10 +3,9 @@ import 'package:flutter_covid_dashboard_ui/config/palette.dart';
 import 'package:flutter_covid_dashboard_ui/config/styles.dart';
 import 'package:flutter_covid_dashboard_ui/data/data.dart';
 import 'package:flutter_covid_dashboard_ui/widgets/widgets.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert' show json;
 import 'package:url_launcher/url_launcher.dart';
-import 'dart:io' show Platform, stdout;
+import 'package:intl/intl.dart';
+import 'dart:io' show Platform;
 
 
 
@@ -16,37 +15,9 @@ class HomeScreen extends StatefulWidget {
 }
 class _HomeScreenState extends State<HomeScreen> {
 
-Map WorldData;
-Map USData;
-
-fetchUSData() async {
-    http.Response response = await http.get(USA);
-    setState(() {
-      USData = json.decode(response.body);
-    });
-  }
-
-  fetchWorldWideData() async {
-    http.Response response = await http.get(Global);
-    setState(() {
-      WorldData = json.decode(response.body);
-    });
-  }
-
- Future fetchData() async{
-    fetchWorldWideData();
-    fetchUSData();
-    print('fetchData called');
-  }
-
-  @override
-  void initState() {
-    fetchData();
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
+    fetchData();
     final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Palette.primaryColor,
@@ -132,18 +103,8 @@ fetchUSData() async {
                         horizontal: 20.0,
                       ),
                       onPressed: () {
-
-                        if(Platform.isAndroid)
-                        {
                           const uri = 'sms:800 232 4636?body=hello%20there';
                           launch(uri);
-                        }
-
-                        else if(Platform.isIOS){
-                          const uri = 'sms:0039-222-060-888';
-                          launch(uri);
-                        }
-                        
                       },
                       color: Color(0xFF14B5D0),
                       shape: RoundedRectangleBorder(
@@ -208,7 +169,7 @@ fetchUSData() async {
               height: 400,
               child: Column(
               children: <Widget>[
-              CovidBarChart(covidCases: covidUSADailyNewCases),//make it a function
+              CovidBarChart(covidCases: covidUSADailyNewCases)//make it a function
               ]),
             ),
           ],
