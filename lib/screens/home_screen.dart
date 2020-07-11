@@ -3,12 +3,44 @@ import 'package:flutter_covid_dashboard_ui/config/palette.dart';
 import 'package:flutter_covid_dashboard_ui/config/styles.dart';
 import 'package:flutter_covid_dashboard_ui/data/data.dart';
 import 'package:flutter_covid_dashboard_ui/widgets/widgets.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert' show json;
+
 
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 class _HomeScreenState extends State<HomeScreen> {
+
+Map WorldData;
+Map USData;
+
+fetchUSData() async {
+    http.Response response = await http.get(USA);
+    setState(() {
+      USData = json.decode(response.body);
+    });
+  }
+
+  fetchWorldWideData() async {
+    http.Response response = await http.get(Global);
+    setState(() {
+      WorldData = json.decode(response.body);
+    });
+  }
+
+ Future fetchData() async{
+    fetchWorldWideData();
+    fetchUSData();
+    print('fetchData called');
+  }
+
+  @override
+  void initState() {
+    fetchData();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -156,12 +188,18 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Container(
               height: 400,
-              child: CovidBarChart(covidCases: covidUSADailyNewCases),
+              child: Column(
+              children: <Widget>[
+              CovidBarChart(covidCases: covidUSADailyNewCases),//make it a function
+              ]),
             ),
           ],
         ),
       ),
     );
+    
   }
 
 }
+
+//worldData['cases'].toString()
