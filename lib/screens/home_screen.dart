@@ -1,21 +1,30 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_covid_dashboard_ui/config/palette.dart';
 import 'package:flutter_covid_dashboard_ui/config/styles.dart';
 import 'package:flutter_covid_dashboard_ui/data/data.dart';
+import 'package:flutter_covid_dashboard_ui/widgets/confirmed_tab.dart';
+import 'package:flutter_covid_dashboard_ui/widgets/recovered_tab.dart';
 import 'package:flutter_covid_dashboard_ui/widgets/widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:intl/intl.dart';
-import 'dart:io' show Platform;
-
-
 
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
-class _HomeScreenState extends State<HomeScreen> {
 
+class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
+  TabController _tabController;
   @override
+  void initState() {
+    _tabController = new TabController(vsync: this, length: 3);
+    super.initState();
+  }
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
   Widget build(BuildContext context) {
     fetchData();
     final screenHeight = MediaQuery.of(context).size.height;
@@ -48,8 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: <Widget>[
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-              ],
+              children: <Widget>[],
             ),
             SizedBox(height: screenHeight * 0.02),
             Column(
@@ -65,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(height: screenHeight * 0.02),
                 Text(
-                  'If someone is showing any of these symptoms, seek emergency medical care immediately.',
+                  'If someone is showing any symptoms, seek emergency medical care immediately.',
                   style: const TextStyle(
                     color: Colors.white70,
                     fontSize: 17.0,
@@ -103,8 +111,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         horizontal: 20.0,
                       ),
                       onPressed: () {
-                          const uri = 'sms:800 232 4636?body=hello%20there';
-                          launch(uri);
+                        const uri = 'sms:800 232 4636?body=hello%20there';
+                        launch(uri);
                       },
                       color: Color(0xFF14B5D0),
                       shape: RoundedRectangleBorder(
@@ -133,7 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
   SliverToBoxAdapter _buildStatistics(double screenHeight) {
     return SliverToBoxAdapter(
       child: Container(
-        height: screenHeight,
+        height: 400.0,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
@@ -142,42 +150,45 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
           children: <Widget>[
             DefaultTabController(
               length: 3,
-              child: TabBar(
-                indicator: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20.0),
-                  color: Color(0xFFEC6969)
-                ),
-                indicatorColor: Colors.transparent,
-                labelStyle: Styles.tabTextStyle,
-                labelPadding: EdgeInsets.all(10.0),
-                labelColor: Colors.white,
-                unselectedLabelColor: Color(0xFFACABBB),
-                tabs: <Widget>[
-                  Text('Confirmed'),
-                  Text('Deaths'),
-                  Text('Fatality %'),
+              initialIndex: 0,
+              child: Column(
+                children: <Widget>[
+                  TabBar(
+                    indicator: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20.0),
+                        color: Color(0xFFEC6969)),
+                    indicatorColor: Colors.transparent,
+                    labelStyle: Styles.tabTextStyle,
+                    labelPadding: EdgeInsets.all(10.0),
+                    labelColor: Colors.white,
+                    unselectedLabelColor: Color(0xFFACABBB),
+                    tabs: <Widget>[
+                      Text('Confirmed'),
+                      Text('Deaths'),
+                      Text('Recovered'),
+                    ],
+                    onTap: (index) {},
+                  ),
+                  Container(
+                    height: 250.0,
+                    child: TabBarView(
+                      children: <Widget>[
+                        ConfirmedTab(),
+                        DeathTab(),
+                        RecoveredTab(),
+                      ],
+                    ),
+                  ),
                 ],
-                onTap: (index) {},
               ),
             ),
-            Container(
-              height: 400,
-              child: Column(
-              children: <Widget>[//make it a function
-              ]),
-            ),
-          ],
-        ),
-      ),
+        ],
+    ),
+    ),
     );
-    
   }
-
 }
-
-//worldData['cases'].toString()
