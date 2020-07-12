@@ -26,6 +26,6 @@ final slideList = [
   Slide(
       imageUrl: 'assets/images/Social Distancing.png',
       title: 'Keep your distance!',
-      description: 'Keep your 6ft distance from everyone at all times'
+      description: 'Keep your 6 ft distance from everyone at all times'
   ),
 ];
