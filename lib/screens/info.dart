@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_covid_dashboard_ui/model/slide.dart';
+import 'package:flutter_covid_dashboard_ui/widgets/slide_dots.dart';
 import '../widgets/slide_item.dart';
 import '../model/slide.dart';
+import 'dart:async';
+import '../widgets/slide_dots.dart';
 
 class InfoScreen extends StatefulWidget {
   @override
@@ -9,9 +12,22 @@ class InfoScreen extends StatefulWidget {
 }
 
 class _InfoScreenState extends State<InfoScreen> {
+  int _currentPage = 0;
   final PageController _pageController = PageController(
       initialPage: 0
   );
+
+  @override
+  void dispose(){
+    super.dispose();
+    _pageController.dispose();
+  }
+
+  _onPageChanged(int index){
+    setState(() {
+      _currentPage = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +36,36 @@ class _InfoScreenState extends State<InfoScreen> {
         body: Container(
           color: Colors.white,
           child: Expanded(
-            child: PageView.builder(
-              scrollDirection: Axis.horizontal,
-              controller: _pageController,
-              itemCount: slideList.length,
-              itemBuilder: (ctx, i) => SlideItem(i),
+            child: Stack(
+              alignment: AlignmentDirectional.bottomCenter,
+              children: <Widget>[
+                PageView.builder(
+                  scrollDirection: Axis.horizontal,
+                  controller: _pageController,
+                  onPageChanged: _onPageChanged,
+                  itemCount: slideList.length,
+                  itemBuilder: (ctx, i) => SlideItem(i),
+                ),
+                Stack(
+                  alignment: AlignmentDirectional.topStart,
+                  children: <Widget>[
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 35),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          for(int i = 0; i < slideList.length; i++)
+                            if(i == _currentPage)
+                              SlideDots(true)
+                            else
+                              SlideDots(false)
+                        ],
+                      ),
+                    )
+                  ],
+                )
+              ],
             ),
           ),
         )
