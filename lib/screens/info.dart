@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_covid_dashboard_ui/model/slide.dart';
-import 'package:flutter_covid_dashboard_ui/widgets/slide_dots.dart';
-import '../widgets/slide_item.dart';
-import '../model/slide.dart';
-import 'dart:async';
-import '../widgets/slide_dots.dart';
+import 'package:flutter_covid_dashboard_ui/widgets/widgets.dart';
 
 class InfoScreen extends StatefulWidget {
   @override

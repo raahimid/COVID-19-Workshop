@@ -1,3 +1,9 @@
 export 'custom_app_bar.dart';
 export 'stats_boxes.dart';
 export 'death_tab.dart';
+export 'confirmed_tab.dart';
+export 'custom_app_bar.dart';
+export 'death_tab.dart';
+export 'recovered_tab.dart';
+export 'slide_dots.dart';
+export 'slide_item.dart';
