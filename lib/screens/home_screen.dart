@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_covid_dashboard_ui/config/palette.dart';
 import 'package:flutter_covid_dashboard_ui/config/styles.dart';
 import 'package:flutter_covid_dashboard_ui/data/data.dart';
-import 'package:flutter_covid_dashboard_ui/widgets/confirmed_tab.dart';
-import 'package:flutter_covid_dashboard_ui/widgets/recovered_tab.dart';
 import 'package:flutter_covid_dashboard_ui/widgets/widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -12,7 +10,6 @@ class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
-
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
   TabController _tabController;
   @override
@@ -25,8 +22,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
     _tabController.dispose();
     super.dispose();
   }
+
   Widget build(BuildContext context) {
-    fetchData();
     final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Palette.primaryColor,
@@ -142,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
   SliverToBoxAdapter _buildStatistics(double screenHeight) {
     return SliverToBoxAdapter(
       child: Container(
-        height: 400.0,
+        height: 450.0,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(

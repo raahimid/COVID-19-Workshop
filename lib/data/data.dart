@@ -8,11 +8,6 @@ final prevention = [
   {'assets/images/MaskGirl.png': 'Wear a\nfacemask'},
 ];
 
-//Total US Deaths, Total Global Deaths
-//Confirmed total US Cases, Total Global Confirmed
-//Recovered Total US Convered, Total Global Confirmed
-
-
 Map WorldData;
 Map USData;
 
@@ -21,10 +16,15 @@ final String USA = 'https://corona.lmao.ninja/v3/covid-19/countries/US';
 
 
 fetchUSData() async {
-    http.Response response = await http.get(USA);
-  
-    USData = json.decode(response.body);
-    
+    final response = await http.get(USA);
+
+
+    if (response.statusCode == 200) {
+      USData = json.decode(response.body);
+    } else {
+
+      throw Exception('Failed to load data');
+    }
   }
 
   fetchWorldWideData() async {
