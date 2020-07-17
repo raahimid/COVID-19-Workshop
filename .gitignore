@@ -9,19 +9,16 @@
 .buildlog/
 .history
 .svn/
-
 # IntelliJ related
 *.iml
 *.ipr
 *.iws
 .idea/
-
 # Visual Studio Code related
 .classpath
 .project
 .settings/
 .vscode/
-
 # Flutter repo-specific
 /bin/cache/
 /bin/mingit/
@@ -36,10 +33,8 @@
 /dev/integration_tests/**/Pods
 /packages/flutter/coverage/
 version
-
 # packages file containing multi-root paths
 .packages.generated
-
 # Flutter/Dart/Pub related
 **/doc/api/
 .dart_tool/
@@ -54,7 +49,6 @@ flutter_*.png
 linked_*.ds
 unlinked.ds
 unlinked_spec.ds
-
 # Android related
 **/android/**/gradle-wrapper.jar
 **/android/.gradle
@@ -65,7 +59,6 @@ unlinked_spec.ds
 **/android/**/GeneratedPluginRegistrant.java
 **/android/key.properties
 *.jks
-
 # iOS/XCode related
 **/ios/**/*.mode1v3
 **/ios/**/*.mode2v3
@@ -94,19 +87,15 @@ unlinked_spec.ds
 **/ios/Flutter/flutter_export_environment.sh
 **/ios/ServiceDefinitions.json
 **/ios/Runner/GeneratedPluginRegistrant.*
-
 # macOS
 **/macos/Flutter/GeneratedPluginRegistrant.swift
 **/macos/Flutter/Flutter-Debug.xcconfig
 **/macos/Flutter/Flutter-Release.xcconfig
 **/macos/Flutter/Flutter-Profile.xcconfig
-
 # Coverage
 coverage/
-
 # Symbols
 app.*.symbols
-
 # Exceptions to above rules.
 !**/ios/**/default.mode1v3
 !**/ios/**/default.mode2v3

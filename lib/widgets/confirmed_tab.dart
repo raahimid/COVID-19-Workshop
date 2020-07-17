@@ -50,7 +50,7 @@ class ConfirmedTab extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "*These numbers are updated daily.",
+                  "*These numbers are updated in real time.",
                   textAlign: TextAlign.start,
                   style: GoogleFonts.roboto(
                     color: Color(0xFFACABBB),
