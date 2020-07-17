@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_covid_dashboard_ui/data/data.dart';
 
 
 class StatsBoxes extends StatelessWidget {
@@ -30,7 +31,9 @@ class StatsBoxes extends StatelessWidget {
               size: 36.0,
             ),
             Spacer(),
-            Text(
+            (WorldData == null || USData == null) ? CircularProgressIndicator(
+              value: 10.0,
+            ) : Text(
               data,
               style: GoogleFonts.poppins(
                 color: Colors.white,

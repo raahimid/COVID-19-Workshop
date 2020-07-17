@@ -109,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                       ),
                       onPressed: () {
                         const url =
-                            "https://www.floridadisaster.org/covid19/testing-sites/";
+                            "https://www.hhs.gov/coronavirus/community-based-testing-sites/index.html";
                         launch(url);
                       },
                       color: Color(0xFF14B5D0),
@@ -137,6 +137,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
   }
 
   SliverToBoxAdapter _buildStatistics(double screenHeight) {
+    bool showProgress = false;
     return SliverToBoxAdapter(
       child: Container(
         height: 450.0,
